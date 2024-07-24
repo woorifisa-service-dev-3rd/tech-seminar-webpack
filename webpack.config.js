@@ -7,4 +7,16 @@ module.exports = {
     path: path.resolve(__dirname, './dist'), // the bundled file will be placed in the dist folder
   },
   mode: 'none', // this is the default mode, you can also set it to 'development' or 'production'
+  module: {
+    rules: [
+      {
+        test: /\.(ttf)$/i,
+        type: 'asset/resource',
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        type: 'asset/resource',
+      },
+    ],
+  },
 };
