@@ -5,17 +5,14 @@ module.exports = {
   output: {
     filename: 'bundle.js', // the bundled file will be named bundle.js
     path: path.resolve(__dirname, './dist'), // the bundled file will be placed in the dist folder
+    publicPath: 'dist/', // the path to the bundled file will be dist/bundle
   },
   mode: 'none', // this is the default mode, you can also set it to 'development' or 'production'
   module: {
     rules: [
       {
-        test: /\.(ttf)$/i,
-        type: 'asset/resource',
-      },
-      {
         test: /\.(png|jpe?g|gif)$/i,
-        type: 'asset/resource',
+        type: 'asset/inline',
       },
     ],
   },
