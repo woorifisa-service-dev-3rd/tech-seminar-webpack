@@ -27,6 +27,17 @@ module.exports = {
         test: /\.s[ac]ss$/i,
         use: ['style-loader', 'css-loader', 'sass-loader'],
       },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/env'], // env preset을 사용하여 ES6+ 코드를 ES5로 변환
+            plugins: ['@babel/plugin-proposal-class-properties'], // class properties plugin을 사용하여 class properties를 변환
+          },
+        },
+      },
     ],
   },
 };
