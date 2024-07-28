@@ -1,5 +1,6 @@
 const path = require('path'); // config file에서는 ESM 문법을 사용할 수 없으므로 require로 불러온다.
 const TerserPlugin = require('terser-webpack-plugin'); // terser-webpack-plugin을 사용하여 코드를 압축
+const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // mini-css-extract-plugin을 사용하여 CSS 파일을 추출
 
 module.exports = {
   entry: './src/index.js', // webpack will start bundling from this file
@@ -21,11 +22,11 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
       {
         test: /\.s[ac]ss$/i,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
       {
         test: /\.js$/,
@@ -42,5 +43,8 @@ module.exports = {
   },
   plugins: [
     new TerserPlugin(), // TerserPlugin을 사용하여 코드를 압축
+    new MiniCssExtractPlugin({
+      filename: 'styles.css',
+    }), // MiniCssExtractPlugin을 사용하여 CSS 파일을 추출
   ],
 };
