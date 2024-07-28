@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // mini-css-ext
 module.exports = {
   entry: './src/index.js', // webpack will start bundling from this file
   output: {
-    filename: 'bundle.js', // the bundled file will be named bundle.js
+    filename: 'bundle.[contenthash].js', // the bundled file will be named bundle.js
     path: path.resolve(__dirname, './dist'), // the bundled file will be placed in the dist folder
     publicPath: 'dist/', // the path to the bundled file will be dist/bundle
   },
@@ -44,7 +44,7 @@ module.exports = {
   plugins: [
     new TerserPlugin(), // TerserPlugin을 사용하여 코드를 압축
     new MiniCssExtractPlugin({
-      filename: 'styles.css',
+      filename: 'styles.[contenthash].css',
     }), // MiniCssExtractPlugin을 사용하여 CSS 파일을 추출
   ],
 };
