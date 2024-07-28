@@ -50,6 +50,12 @@ module.exports = {
       filename: 'styles.[contenthash].css',
     }), // MiniCssExtractPlugin을 사용하여 CSS 파일을 추출
     // new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      title: 'Hello FISA',
+      filename: 'index.html',
+      meta: {
+        description: 'Some description',
+      },
+    }),
   ],
 };
