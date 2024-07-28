@@ -1,6 +1,7 @@
 const path = require('path'); // config file에서는 ESM 문법을 사용할 수 없으므로 require로 불러온다.
 const TerserPlugin = require('terser-webpack-plugin'); // terser-webpack-plugin을 사용하여 코드를 압축
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // mini-css-extract-plugin을 사용하여 CSS 파일을 추출
+const { CleanWebpackPlugin } = require('clean-webpack-plugin'); // clean-webpack-plugin을 사용하여 빌드 이전 파일을 삭제
 
 module.exports = {
   entry: './src/index.js', // webpack will start bundling from this file
@@ -46,5 +47,6 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'styles.[contenthash].css',
     }), // MiniCssExtractPlugin을 사용하여 CSS 파일을 추출
+    new CleanWebpackPlugin(),
   ],
 };
